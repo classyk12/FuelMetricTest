@@ -109,10 +109,14 @@ class AddDriverScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: Button(
-                          title: 'Add Driver',
+                          title: _controller.driver != null
+                              ? 'Update Driver'
+                              : 'Add Driver',
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
-                              _controller.addDriver();
+                              _controller.driver == null
+                                  ? _controller.addDriver()
+                                  : _controller.editDriver();
                             }
                           }),
                     ),

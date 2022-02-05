@@ -102,7 +102,7 @@ class DashboardScreen extends StatelessWidget {
           Button(
               height: 50,
               title: 'Add Driver',
-              onPressed: () => Get.toNamed('/addDriver', arguments: ''))
+              onPressed: () => Get.toNamed('/addDriver', arguments: null))
         ],
       ),
     );
@@ -133,9 +133,21 @@ class DashboardScreen extends StatelessWidget {
                           Text('${item.name!} - (${item.code})'),
                           SizedBox(height: 5),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text('Email: ${item.email!}'),
+                              Expanded(child: Container()),
+                              InkWell(
+                                onTap: () =>
+                                    Get.toNamed('/addDriver', arguments: item),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(right: 20.0),
+                                  child: Icon(
+                                    Icons.edit,
+                                    color: Colors.blue,
+                                  ),
+                                ),
+                              ),
                               InkWell(
                                 onTap: () => _homeController.removeDriver(
                                     item.id!, index),
@@ -146,7 +158,7 @@ class DashboardScreen extends StatelessWidget {
                                     color: Colors.red,
                                   ),
                                 ),
-                              )
+                              ),
                             ],
                           ),
                           SizedBox(height: 5),

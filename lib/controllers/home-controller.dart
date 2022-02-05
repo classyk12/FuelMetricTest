@@ -79,11 +79,9 @@ class HomeController extends GetxController {
 
   Future<void> removeDriver(String driverId, int index) async {
     showloader();
-    //  getDriverstatus.value = LoadingEnum.loading;
     try {
       var res = await _companyService.deleteDrivers(
           companyData.value.company!.id!, driverId);
-      //   getDriverstatus.value = LoadingEnum.done;
       Get.back();
       if (res.statusCode == 200 || res.statusCode == 201) {
         //remove driver at index
@@ -92,7 +90,6 @@ class HomeController extends GetxController {
             Icons.info, Colors.green,
             duration: 3, position: SnackPosition.TOP);
       } else {
-        // getDriverstatus.value = LoadingEnum.failed;
         CommonDialogs.showSnackInfo(
             ' Error',
             ' Could not delete driver at the moment, try again',
