@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:fuelmetrics_flutter_project/models/add-driver-model.dart';
 import 'package:fuelmetrics_flutter_project/services/resource.dart';
 import 'package:fuelmetrics_flutter_project/utils.dart/error-handler.dart';
 
@@ -9,6 +10,18 @@ class CompanyService {
     try {
       Response response =
           await _resource.request('Company/Details', body: null, method: "Get");
+      return response;
+    } on DioError catch (e) {
+      throw ErrorHandler.catchError(e);
+    }
+  }
+
+  Future<Response> addDriver(AddDriverRequest model) async {
+    try {
+      Response response = await _resource.request(
+          'Driver/Add/${model.companyId}',
+          body: model.toJson(),
+          method: "Post");
       return response;
     } on DioError catch (e) {
       throw ErrorHandler.catchError(e);

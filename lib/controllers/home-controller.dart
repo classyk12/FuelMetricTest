@@ -88,8 +88,8 @@ class HomeController extends GetxController {
       if (res.statusCode == 200 || res.statusCode == 201) {
         //remove driver at index
         drivers.removeAt(index);
-        CommonDialogs.showSnackInfo(
-            ' Success', ' Driver deleted successfully', Icons.info, Colors.red,
+        CommonDialogs.showSnackInfo(' Success', ' Driver deleted successfully',
+            Icons.info, Colors.green,
             duration: 3, position: SnackPosition.TOP);
       } else {
         // getDriverstatus.value = LoadingEnum.failed;

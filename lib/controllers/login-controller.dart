@@ -29,7 +29,7 @@ class LoginController extends GetxController {
         loginResponse = LoginSuccessResponseModel.fromJson(res.data);
 
         //save details to local
-        // await Storage.save('user_data', loginResponse!.toJson());
+        await Storage.save('user_data', loginResponse!.toJson());
         await Storage.save('token', loginResponse!.token!);
         Get.offNamed('/dashboard');
       } else {

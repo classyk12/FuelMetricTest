@@ -97,7 +97,12 @@ class DashboardScreen extends StatelessWidget {
               onPressed: () {
                 _homeController.showDrivers.value = true;
                 _homeController.getCompanyDrivers();
-              })
+              }),
+          SizedBox(height: 20),
+          Button(
+              height: 50,
+              title: 'Add Driver',
+              onPressed: () => Get.toNamed('/addDriver', arguments: ''))
         ],
       ),
     );
